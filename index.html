@@ -7,39 +7,39 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="nasa-navbar">
-      <div class="nav-left">
+   <nav class="nasa-navbar">
+    <div class="mobile-only menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="nav-left desktop-only">
         <div class="explore-btn">
-          <span>Explore</span>
-          <i class="chevron-down"></i>
+            <span>Explore</span>
+            <span class="chevron-down"></span>
         </div>
         <div class="search-container">
-          <input type="text" placeholder="Search" id="nasa-search" />
+            <input type="text" placeholder="Search" id="nasa-search">
         </div>
-      </div>
+    </div>
 
-      <div class="nav-center">
-        <img
-          src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg"
-          alt="NASA Logo"
-          class="logo"
-        />
-      </div>
+    <div class="nav-center">
+        <img src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg" alt="NASA Logo" class="logo">
+    </div>
 
-      <div class="nav-right">
+    <div class="nav-right desktop-only">
         <ul class="nav-links">
-          <li>News & Events <i class="chevron-down"></i></li>
-          <li>Multimedia <i class="chevron-down"></i></li>
-          <li>NASA+ <span class="live-tag">LIVE</span></li>
+            <li>News & Events</li>
+            <li>Multimedia</li>
+            <li>NASA+ <span class="live-tag">LIVE</span></li>
         </ul>
-      </div>
+    </div>
 
-      <div class="mobile-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </nav>
+    <div class="mobile-only search-icon-mobile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    </div>
+</nav>
     <script src="script.js"></script>
   </body>
 </html>
