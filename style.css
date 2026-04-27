@@ -1,0 +1,106 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif; /* NASA clean font use krta hai */
+}
+
+/* body {
+    background-color: #000;
+} */
+
+.nasa-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    color: white;
+    padding: 15px 40px;
+    height: 80px;
+    border-bottom: 1px solid #333;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Left Section */
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex: 1;
+}
+
+.explore-btn {
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#nasa-search {
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Center Logo */
+.nav-center {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.logo {
+    width: 80px;
+    cursor: pointer;
+}
+
+/* Right Section */
+.nav-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.nav-links li {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.live-tag {
+    border: 1px solid red;
+    color: red;
+    padding: 2px 5px;
+    font-size: 10px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Responsive Logic (Mobile) */
+@media (max-width: 992px) {
+    .nav-links, .search-container {
+        display: none; /* Mobile pe hum menu toggle dikhayein ge */
+    }
+    
+    .nasa-navbar {
+        padding: 10px 20px;
+    }
+    
+    .nav-left {
+        flex: none;
+    }
+}
