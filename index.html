@@ -3,43 +3,690 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <title>NASA Landing Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-   <nav class="nasa-navbar">
-    <div class="mobile-only menu-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <div class="nav-left desktop-only">
-        <div class="explore-btn">
-            <span>Explore</span>
-            <span class="chevron-down"></span>
+    <nav class="nasa-navbar">
+      <div class="container-fluid">
+        <div class="nav-left desktop-only">
+          <button
+            class="explore-btn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="explore-panel"
+          >
+            Explore <span class="chevron" aria-hidden="true"></span>
+          </button>
         </div>
-        <div class="search-container">
-            <input type="text" placeholder="Search" id="nasa-search">
+
+        <button
+          class="mobile-only menu-burger"
+          type="button"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+
+        <div class="nav-center">
+          <img
+            src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg"
+            alt="NASA"
+            class="logo"
+          />
         </div>
-    </div>
 
-    <div class="nav-center">
-        <img src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg" alt="NASA Logo" class="logo">
-    </div>
-
-    <div class="nav-right desktop-only">
-        <ul class="nav-links">
+        <div class="nav-right desktop-only">
+          <ul class="nav-links">
             <li>News & Events</li>
             <li>Multimedia</li>
             <li>NASA+ <span class="live-tag">LIVE</span></li>
-        </ul>
+          </ul>
+        </div>
+
+        <button
+          class="mobile-only search-icon"
+          type="button"
+          aria-label="Search (disabled)"
+        >
+          🔍
+        </button>
+      </div>
+    </nav>
+
+    <!-- Explore dropdown (simple clone) -->
+    <div class="explore-panel" id="explore-panel" hidden>
+      <div class="explore-inner container">
+        <div class="explore-col">
+          <h3>Topics</h3>
+          <a href="#">Missions</a>
+          <a href="#">Humans in Space</a>
+          <a href="#">Earth</a>
+          <a href="#">The Solar System</a>
+          <a href="#">Universe</a>
+        </div>
+        <div class="explore-col">
+          <h3>Resources</h3>
+          <a href="#">NASA+</a>
+          <a href="#">Image of the Day</a>
+          <a href="#">Events</a>
+          <a href="#">Podcasts</a>
+          <a href="#">STEM</a>
+        </div>
+        <div class="explore-col">
+          <h3>About</h3>
+          <a href="#">About NASA</a>
+          <a href="#">Leadership</a>
+          <a href="#">Careers</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
     </div>
 
-    <div class="mobile-only search-icon-mobile">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <div class="mobile-menu-inner">
+        <div class="mobile-menu-header">
+          <span class="mobile-menu-title">Menu</span>
+          <button
+            class="mobile-menu-close"
+            type="button"
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </div>
+        <a href="#">News & Events</a>
+        <a href="#">Multimedia</a>
+        <a href="#">NASA+</a>
+        <a href="#">Missions</a>
+        <a href="#">Humans in Space</a>
+      </div>
     </div>
-</nav>
+
+    <!-- search overlay removed -->
+
+    <section class="hero-main">
+      <div class="hero-bg-container">
+        <img
+          src="https://www.nasa.gov/wp-content/uploads/2026/04/55114649503-06b807462e-o.jpg?resize=1536,1024"
+          alt="Humans in Space"
+          class="main-hero-img"
+        />
+
+        <div class="hero-content-wrapper">
+          <div class="hero-text-area">
+            <h1 class="main-title">Humans in Space</h1>
+            <p class="main-subtitle">
+              NASA astronauts Jessica Watkins and Luke Delaney, CSA (Canadian
+              Space Agency) astronaut Joshua Kutryk, and Roscosmos cosmonaut
+              Sergey Teteryatnikov are set to launch no earlier than
+              mid-September as part of NASA’s SpaceX Crew-13 mission.
+            </p>
+            <button class="nasa-btn-red">NASA's SpaceX Crew-13</button>
+          </div>
+
+          <div class="hero-bottom-info">
+            <div class="info-col">
+              <span class="label">YOUR ORBITING LABORATORY</span>
+              <a href="#"
+                >Space Station Updates <span class="arrow-red">→</span></a
+              >
+            </div>
+            <div class="info-col">
+              <span class="label">CURRENT MISSION</span>
+              <a href="#">Expedition 74 <span class="arrow-red">→</span></a>
+            </div>
+            <div class="info-col">
+              <span class="label">BENEFITS FOR HUMANITY</span>
+              <a href="#"
+                >Space Station Science <span class="arrow-red">→</span></a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="video-controls">
+        <button class="nasa-pause-btn" type="button" aria-label="Pause Video">
+          <svg
+            class="pause-icon"
+            viewBox="0 0 100 100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <rect x="20" y="15" width="30" height="80" fill="white" />
+            <rect x="70" y="15" width="30" height="80" fill="white" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="featured-news">
+      <div class="container">
+        <div class="news-header">
+          <h2>Featured News</h2>
+          <a href="#" class="recently-published"
+            >Recently Published <span class="arrow-circle">→</span></a
+          >
+        </div>
+
+        <div class="news-grid">
+          <div class="news-card large-card">
+            <img
+              src="https://www.nasa.gov/wp-content/uploads/2026/03/iss-04-27-26.png"
+              alt="News 1"
+            />
+            <div class="card-content">
+              <span class="meta"
+                ><span class="icon">目</span> BLOG · 1 MIN READ</span
+              >
+              <h3>
+                Progress 95 Cargo Craft Docks to Station with Food, Fuel, and
+                Supplies
+              </h3>
+            </div>
+          </div>
+
+          <div class="news-card medium-card">
+            <img
+              src="https://www.nasa.gov/wp-content/uploads/2026/04/roman-option-3.jpg?resize=1200,800"
+              alt="News 2"
+            />
+            <div class="card-content">
+              <span class="meta"
+                ><span class="icon">回</span> IMAGE ARTICLE · 2 MIN READ</span
+              >
+              <h3>
+                NASA Targets Early September for Roman Space Telescope Launch
+              </h3>
+            </div>
+          </div>
+
+          <div class="news-right-col">
+            <div class="news-card small-card">
+              <img
+                src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/dragonfly/FitCheck1.jpg"
+                alt="News 3"
+              />
+              <div class="card-content">
+                <span class="meta">BLOG · 4 MIN READ</span>
+                <h4>NASA's Dragonfly Rotorcraft Gets Decked Out, Tested</h4>
+              </div>
+            </div>
+            <div class="news-card small-card">
+              <img
+                src="https://www.nasa.gov/wp-content/uploads/2026/04/image-2-ivgen-mini-hardware-e1776959913490.jpeg?resize=1536,1189"
+                alt="News 4"
+              />
+              <div class="card-content">
+                <span class="meta">ARTICLE · 4 MIN READ</span>
+                <h4>
+                  Liquid Lifeline: NASA Tech Could Create IV Fluid In Space
+                </h4>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="circular-news-list">
+          <div class="list-item">
+            <img
+              src="https://assets.science.nasa.gov/dynamicimage/assets/science/esd/articles/2026/pace_tour_diatom_still_01.05500.tif"
+              class="round-thumb"
+              alt=""
+            />
+            <div class="list-info">
+              <span class="read-meta">1 MIN READ</span>
+              <p class="list-title">New NASA Views of Earth, From (S)PACE</p>
+              <span class="type-label">ARTICLE</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <img
+              src="https://assets.science.nasa.gov/dynamicimage/assets/science/missions/dragonfly/FitCheck1.jpg"
+              class="round-thumb"
+              alt=""
+            />
+            <div class="list-info">
+              <span class="read-meta">2 MIN READ</span>
+              <p class="list-title">Jupiter’s Aurora at New Wavelengths</p>
+              <span class="type-label">IMAGE</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <img
+              src="https://www.nasa.gov/wp-content/uploads/2026/04/image-2-ivgen-mini-hardware-e1776959913490.jpeg?resize=100,100"
+              class="round-thumb"
+              alt=""
+            />
+            <div class="list-info">
+              <span class="read-meta">3 MIN READ</span>
+              <p class="list-title">Earth Views from the Space Station</p>
+              <span class="type-label">ARTICLE</span>
+            </div>
+          </div>
+          <div class="list-item">
+            <img
+              src="https://www.nasa.gov/wp-content/uploads/2024/11/08-degrendele-exh-liq-v04-4k-h265.jpg?resize=100,100"
+              class="round-thumb"
+              alt=""
+            />
+            <div class="list-info">
+              <span class="read-meta">1 MIN READ</span>
+              <p class="list-title">A New Look at an Ancient Crater</p>
+              <span class="type-label">IMAGE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="featured-video">
+      <div class="container featured-video-inner">
+        <div class="featured-video-copy">
+          <span class="kicker-dark">FEATURED VIDEO</span>
+          <h2>Capturing Two Sides<br />of Mars</h2>
+          <p>
+            NASA’s Curiosity and Perseverance rovers have captured two
+            360-degree landscapes that highlight how the missions are revealing
+            details of the Red Planet’s formation, watery past, and potential
+            for life.
+          </p>
+          <a class="nasa-link" href="#"
+            >Learn More
+            <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+
+        <div class="featured-video-media">
+          <div class="yt-embed" aria-label="Featured video">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/Q_P0swqaZDk?rel=0&modestbranding=1"
+              title="NASA featured video"
+              frameborder="0"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+                web-share;
+              "
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="nasa-science">
+      <div class="container">
+        <div class="section-header light">
+          <h2>NASA Science</h2>
+          <a class="nasa-link dark" href="#"
+            >Discover More
+            <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+
+        <div class="science-grid">
+          <a
+            class="science-tile"
+            href="#"
+            style="
+              --tile-bg: url(&quot;https://science.nasa.gov/wp-content/uploads/2016/05/1-mars-nasa-gov-jpg.webp&quot;);
+            "
+          >
+            <span class="tile-title">Mars<br />Exploration</span>
+            <span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a
+            class="science-tile"
+            href="#"
+            style="
+              --tile-bg: url(&quot;https://science.nasa.gov/wp-content/uploads/2023/03/jpegpia24836.height-1024-jpg.webp&quot;);
+            "
+          >
+            <span class="tile-title">Perseverance<br />Rover</span>
+            <span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a
+            class="science-tile"
+            href="#"
+            style="
+              --tile-bg: url(&quot;https://assets.science.nasa.gov/dynamicimage/assets/science/psd/solar/2023/07/Color-enhanced_view_of_Jezero_crater_on_Mars.jpeg&quot;);
+            "
+          >
+            <span class="tile-title">Mars Exploration:<br />Science Goals</span>
+            <span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a
+            class="science-tile"
+            href="#"
+            style="
+              --tile-bg: url(&quot;https://assets.science.nasa.gov/dynamicimage/assets/science/psd/photojournal/pia/pia19/pia19808/PIA19808.tif&quot;);
+            "
+          >
+            <span class="tile-title">Rover<br />Basics</span>
+            <span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="image-of-day">
+      <div class="container image-of-day-inner">
+        <div class="iod-left">
+          <span class="kicker-light">TODAY</span>
+          <h2>Image Of The Day</h2>
+          <p class="iod-kicker">Science in Space</p>
+          <p class="iod-desc">
+            Expedition 74 flight engineers Chris Williams of NASA and Sophie
+            Adenot of the European Space Agency work together in the Kibo
+            laboratory module’s Life Science Glovebox.
+          </p>
+          <a class="nasa-link dark" href="#"
+            >Browse Image Archive
+            <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+        <div class="iod-right">
+          <img
+            src="https://www.nasa.gov/wp-content/uploads/2026/04/55228089453-c0d41d11a7-o.jpg?resize=900,600"
+            alt="Image of the Day"
+          />
+          <button
+            class="iod-download"
+            type="button"
+            aria-label="Download image"
+          >
+            ⬇
+          </button>
+          <a class="iod-view" href="#"
+            >View image
+            <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="more-images">
+      <div class="container">
+        <div class="section-header">
+          <h2>More NASA Images</h2>
+        </div>
+        <div class="more-images-grid">
+          <a class="image-card" href="#">
+            <div class="image-card-media">
+              <img
+                src="https://www.nasa.gov/wp-content/uploads/2026/04/nhq202604110022orig.jpg?resize=300,279"
+                alt=""
+              />
+            </div>
+            <div class="image-card-copy">
+              <span class="image-card-title"
+                >Artemis II Splashdown and Recovery Gallery</span
+              >
+              <span class="image-card-meta">70 Images</span>
+            </div>
+          </a>
+          <a class="image-card" href="#">
+            <div class="image-card-media">
+              <img
+                src="https://images-assets.nasa.gov/image/art002e015231/art002e015231~large.jpg?w=300&h=200&fit=crop&crop=faces%2Cfocalpoint"
+                alt=""
+              />
+            </div>
+            <div class="image-card-copy">
+              <span class="image-card-title"
+                >Artemis II Lunar Flyby Gallery</span
+              >
+              <span class="image-card-meta">86 Images</span>
+            </div>
+          </a>
+          <a class="image-card" href="#">
+            <div class="image-card-media">
+              <img
+                src="https://www.nasa.gov/wp-content/uploads/2026/04/55182696113-0c4398702d-o-2.jpg?resize=300,184"
+                alt=""
+              />
+            </div>
+            <div class="image-card-copy">
+              <span class="image-card-title">Artemis II Launch Gallery</span>
+              <span class="image-card-meta">27 Images · 1 Videos</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container newsletter-inner">
+        <div class="newsletter-copy">
+          <h2>Explore the<br />Universe from<br />your Inbox</h2>
+          <p>
+            Stay up-to-date on the latest news from NASA–from Earth to the Moon,
+            the Solar System and beyond.
+          </p>
+          <p class="newsletter-note">
+            We will never share your email address.
+            <a href="#">Privacy Policy</a>
+          </p>
+          <a class="nasa-link" href="#"
+            >Sign Up <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+      </div>
+    </section>
+
+    <section class="freedom">
+      <div class="container freedom-inner">
+        <div class="freedom-copy">
+          <span class="kicker-light">Freedom 250</span>
+          <h2>NASA Celebrates<br />America’s 250th Birthday</h2>
+          <p class="freedom-sub">
+            Our spirit of adventure and innovation will raise our nation to new
+            heights.
+          </p>
+          <p>
+            From the earliest days of exploration, to the first steps on the
+            Moon and the missions shaping our future, NASA represents the spirit
+            of discovery that defines our nation. As the United States
+            approaches its semiquincentennial, Freedom 250 highlights how
+            innovation, courage, and scientific leadership have carried America
+            forward — and how NASA continues to expand the frontier for the next
+            generation.
+          </p>
+          <a class="nasa-link dark" href="https://www.nasa.gov/freedom250/"
+            >Learn More
+            <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+        <figure class="freedom-figure">
+          <img
+            src="https://www.nasa.gov/wp-content/uploads/2026/04/afrc2026-0077-01.jpg?resize=768,512"
+            alt="X-59 with Freedom 250 logo"
+          />
+          <figcaption>
+            NASA’s X-59 is helping the nation celebrate the 250th anniversary of
+            its independence with an update to its livery – its official paint
+            job and insignia.
+            <span class="credit">NASA/Carla Thomas</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="topics">
+      <div class="container">
+        <h2>More Topics from NASA</h2>
+        <div class="topics-grid">
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://www.nasa.gov/wp-content/uploads/2023/02/15404646465-7920e6d9b7-o.jpg?resize=400,266"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Missions</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://www.nasa.gov/wp-content/uploads/2022/12/51476067951-e10dfb6875-o.jpg?resize=400,267"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Humans In<br />Space</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://images-assets.nasa.gov/image/GSFC_20171208_Archive_e001016/GSFC_20171208_Archive_e001016~large.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Earth</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://science.nasa.gov/wp-content/uploads/2023/06/solar-system-illustration-16x9-1.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Our Solar<br />System</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://science.nasa.gov/wp-content/uploads/2023/09/ngc5068-1-flat-final.jpg"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Universe</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://science.nasa.gov/wp-content/uploads/2023/04/hubble_faq_image-jpg.webp"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Science<br />Missions</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://www.nasa.gov/wp-content/uploads/2025/05/p23-171-176.jpg?resize=400,267"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Aeronautics</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="topic-card" href="#">
+            <img
+              class="topic-img"
+              src="https://www.nasa.gov/wp-content/uploads/2022/12/nasa_technology1.png?resize=400,264"
+              alt=""
+              loading="lazy"
+            />
+            <span class="topic-title">Technology</span
+            ><span class="circle-arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="container footer-top">
+        <div class="footer-brand">
+          <img
+            class="footer-logo"
+            src="https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg"
+            alt="NASA"
+          />
+          <h3>National Aeronautics and Space Administration</h3>
+          <p>
+            NASA explores the unknown in air and space, innovates for the
+            benefit of humanity, and inspires the world through discovery.
+          </p>
+          <a class="footer-link-cta" href="#">About NASA’s Mission</a>
+          <a class="footer-join" href="#"
+            >Join Us <span class="circle-arrow" aria-hidden="true">→</span></a
+          >
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer">
+          <div class="footer-col">
+            <a href="#">Home</a>
+            <a href="#">News & Events</a>
+            <a href="#">Multimedia</a>
+            <a href="#">NASA+</a>
+            <a href="#">Missions</a>
+          </div>
+          <div class="footer-col">
+            <a href="#">Humans in Space</a>
+            <a href="#">Earth</a>
+            <a href="#">The Solar System</a>
+            <a href="#">The Universe</a>
+            <a href="#">Science</a>
+          </div>
+          <div class="footer-col">
+            <a href="#">Aeronautics</a>
+            <a href="#">Technology</a>
+            <a href="#">Learning Resources</a>
+            <a href="#">About NASA</a>
+            <a href="#">NASA en Español</a>
+          </div>
+        </nav>
+
+        <div class="footer-follow">
+          <h4>Follow NASA</h4>
+          <div class="footer-icons">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="Instagram">◎</a>
+            <a href="#" aria-label="X">x</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+          <a class="footer-small-link" href="#">More NASA Social Accounts</a>
+          <a class="footer-small-link" href="#">NASA Newsletters</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <div class="footer-meta">
+          <a href="#">Sitemap</a>
+          <a href="#">For Media</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">FOIA</a>
+          <a href="#">No FEAR Act</a>
+          <a href="#">Office of the IG</a>
+          <a href="#">Budget & Annual Reports</a>
+          <a href="#">Agency Financial Reports</a>
+          <a href="#">Contact NASA</a>
+          <a href="#">Accessibility</a>
+        </div>
+        <div class="footer-updated">Page Last Updated: Apr 29, 2026</div>
+      </div>
+    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>

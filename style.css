@@ -1,67 +1,1482 @@
-/* Basic Reset */
+:root {
+  --nasa-red: #ee352e;
+  --font-main: "Public Sans", sans-serif;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif; /* NASA clean font use krta hai */
+  font-family: var(--font-main);
 }
 
-/* body {
-    background-color: #000;
-} */
-
-/* Base Styles */
-.nasa-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+body {
   background-color: #000;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.container-fluid {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   padding: 0 20px;
-  height: 70px;
+  position: relative;
+}
+
+/* --- Navbar --- */
+.nasa-navbar {
+  background: #000;
+  height: 86px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #222;
   position: sticky;
   top: 0;
+  z-index: 50;
 }
 
-.mobile-only {
-  display: none;
-} /* Default pe mobile icons chupa do */
-
-/* Desktop Styles */
 .desktop-only {
   display: flex;
   align-items: center;
 }
+.mobile-only {
+  display: none;
+}
 
-/* Responsive Logic for Mobile (Max 992px) */
-@media (max-width: 992px) {
+.explore-btn {
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  margin-right: 30px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* search removed */
+
+.search-icon {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  display: none;
+}
+
+.chevron {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+  transform: rotate(45deg) translateY(-1px);
+  display: inline-block;
+}
+
+/* search removed */
+
+.logo {
+  width: 60px;
+}
+
+/* Always keep NASA logo perfectly centered */
+.nav-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+.nav-left {
+  justify-content: flex-start;
+  flex: 1;
+}
+.nav-right {
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.menu-burger {
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: 0;
+  display: none; /* only show on mobile */
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+}
+.menu-burger span {
+  height: 2px;
+  width: 22px;
+  background: #fff;
+  display: block;
+}
+
+/* search removed */
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links li {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.live-tag {
+  border: 1px solid var(--nasa-red);
+  color: var(--nasa-red);
+  font-size: 10px;
+  padding: 2px 4px;
+}
+
+.explore-panel {
+  background: #0b0b0b;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 86px;
+  z-index: 40;
+  overflow: hidden;
+  position: sticky;
+  /* needed for ::before */
+  isolation: isolate;
+}
+.explore-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35)),
+    url("https://www.nasa.gov/wp-content/uploads/2023/01/webb-tarantula-neb.png?resize=1536,1199") center/cover no-repeat;
+  transform: scale(1.02);
+  z-index: 0;
+}
+.explore-inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 30px;
+  padding: 24px 20px 30px;
+}
+.explore-col h3 {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.explore-col a {
+  display: block;
+  padding: 8px 0;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+}
+.explore-col a:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 60;
+}
+.mobile-menu-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: min(360px, 86vw);
+  background: #0b0b0b;
+  border-right: 1px solid #222;
+  padding: 18px 18px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #222;
+  margin-bottom: 8px;
+}
+.mobile-menu-title {
+  color: #fff;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.mobile-menu-close {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid #333;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+.mobile-menu-inner a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 10px 6px;
+  border-radius: 6px;
+}
+.mobile-menu-inner a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* search overlay removed */
+
+.hero-main {
+  width: 100%;
+  position: relative;
+  background-color: #000;
+  color: #fff;
+  overflow: hidden;
+}
+
+.hero-bg-container {
+  position: relative;
+  height: 94vh; /* Badi screen coverage */
+  width: 100%;
+}
+
+.main-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient Overlay taake text parha jaye */
+.hero-content-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, transparent 50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0px 0px 0px 20px;
+  align-items: flex-start;
+}
+
+.main-title {
+  font-size: 85px; /* Extra bold and large */
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+}
+
+.main-subtitle {
+  font-size: 18px;
+  max-width: 650px;
+  line-height: 1.4;
+  margin-bottom: 10px;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+.nasa-btn-red {
+  background-color: #ee352e;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 2px;
+  cursor: pointer;
+  margin-bottom: 100px;
+  text-align: left;
+  margin-left: 0px;
+  margin-right: auto;
+}
+
+/* Bottom Grid Section */
+.hero-bottom-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 30px;
+  padding-top: 30px;
+  justify-content: start;
+}
+
+.info-col .label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  color: #ccc;
+  margin-bottom: 10px;
+}
+
+.info-col a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: flex-start;
+  text-align: left;
+  gap: 10px;
+}
+.info-col {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  padding-top: 20px;
+  margin-bottom: 8px;
+}
+.arrow-red {
+  color: #ee352e;
+  font-size: 24px;
+}
+
+/* Pause Button styling */
+.video-controls {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.pause-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+}
+/* Keep pause above overlay */
+.video-controls {
+  z-index: 10;
+}
+
+/* Base button styling */
+/* Base button styling */
+.nasa-pause-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  /* Dark Gray background jaisa image mein hai */
+  background-color: rgba(68, 68, 68, 0.9) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  border: none !important; /* Border bilkul khatam */
+  padding: 15px !important;
+  outline: none !important;
+}
+
+.pause-icon {
+  width: 10px !important;
+  height: 10px !important;
+}
+.featured-news {
+  padding: 60px 20px;
+  background-color: #fff;
+  font-family: "Public Sans", sans-serif;
+  width: 100%;
+}
+
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.news-header h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+/* Main Grid Calculation */
+.news-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr; /* NASA ratio */
+  gap: 24px; /* Exact spacing from screenshot */
+  margin-bottom: 40px;
+}
+
+.news-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  color: white;
+  height: 520px; /* Barray cards ki fixed height */
+}
+
+.news-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* Vertical gap between small cards */
+}
+
+/* Small cards height calculation: (Total Height - Gap) / 2 */
+.news-right-col .small-card {
+  height: 248px;
+}
+
+.news-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+}
+
+/* Circular Bottom Section Spacing */
+.circular-news-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 30px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 24%;
+}
+
+.round-thumb {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.list-info .list-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 4px 0;
+}
+.recently-published {
+  color: black;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
   .desktop-only {
-    display: none !important; /* Mobile pe desktop elements gayab */
+    display: none;
   }
-
   .mobile-only {
-    display: flex; /* Mobile icons zahir */
+    display: flex;
+    align-items: center;
+  }
+  .menu-burger {
+    display: inline-flex;
+  }
+  .search-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  .nav-center {
+  /* Mobile navbar: center logo between icons */
+  .container-fluid {
+    justify-content: center;
+  }
+  .menu-burger {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 12px;
+  }
+  .search-icon {
+    position: absolute;
+    right: 12px;
   }
 
-  .logo {
-    width: 55px; /* Mobile pe logo thoda chota */
+  .hero-bg-container {
+    height: 90vh;
   }
 
-  /* Hamburger Menu Icon Design */
-  .menu-icon {
+  .main-title {
+    font-size: 54px;
+    letter-spacing: -1px;
+  }
+  .main-subtitle {
+    font-size: 16px;
+    max-width: 560px;
+  }
+  .nasa-btn-red {
+    margin-bottom: 70px;
+  }
+
+  .hero-bottom-info {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .video-controls {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  .news-card {
+    height: 420px;
+  }
+  .news-right-col .small-card {
+    height: 240px;
+  }
+
+  .circular-news-list {
     flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
+    gap: 18px;
+  }
+  .list-item {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .nasa-navbar {
+    height: 74px;
+  }
+  .explore-panel {
+    top: 74px;
+  }
+  .logo {
+    width: 52px;
+  }
+  .main-title {
+    font-size: 42px;
+  }
+  .nasa-btn-red {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+/* ---------- Additional NASA homepage sections ---------- */
+.section-kicker {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 10px;
+}
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 0 0 18px;
+}
+.section-header h2 {
+  font-size: 40px;
+  font-weight: 800;
+}
+.section-link {
+  text-decoration: none;
+  font-weight: 800;
+  color: #fff;
+}
+.section-link:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  width: fit-content;
+}
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.btn-outline.dark {
+  border-color: rgba(0, 0, 0, 0.8);
+  color: #000;
+}
+.btn-outline.dark:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.featured-video {
+  background: #000;
+  padding: 70px 20px;
+  color: #fff;
+}
+.featured-video-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.featured-video-media {
+  border-radius: 12px;
+  overflow: hidden;
+  min-height: 360px;
+  background: linear-gradient(135deg, rgba(238, 53, 46, 0.15), rgba(255, 255, 255, 0.06)),
+    url("https://www.nasa.gov/wp-content/uploads/2026/04/mars-360.jpg") center/cover no-repeat;
+  position: relative;
+}
+.featured-video-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+}
+.featured-video-copy h2 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 6px 0 14px;
+}
+.featured-video-copy p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.5;
+  margin: 0 0 18px;
+  max-width: 52ch;
+}
+
+.nasa-science {
+  background: #000;
+  color: #fff;
+  padding: 70px 20px;
+}
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.science-tile {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 18px;
+  text-decoration: none;
+  color: #fff;
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(238, 53, 46, 0.16), transparent 55%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  min-height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+}
+.science-tile:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  transform: translateY(-2px);
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+.tile-kicker {
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 800;
+}
+.tile-title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.image-of-day {
+  background: #fff;
+  color: #000;
+  padding: 70px 20px;
+}
+.image-of-day-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 30px;
+  align-items: center;
+}
+.iod-left h2 {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 6px 0 14px;
+}
+.iod-kicker {
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin: 0 0 10px;
+  color: rgba(0, 0, 0, 0.72);
+}
+.iod-desc {
+  color: rgba(0, 0, 0, 0.78);
+  line-height: 1.55;
+  margin: 0 0 18px;
+  max-width: 60ch;
+}
+.iod-right img {
+  width: 100%;
+  border-radius: 14px;
+  object-fit: cover;
+  aspect-ratio: 16 / 10;
+  display: block;
+}
+
+.more-images {
+  background: #fff;
+  color: #000;
+  padding: 40px 20px 70px;
+}
+.more-images .section-header h2 {
+  font-size: 34px;
+}
+.more-images-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.image-card {
+  text-decoration: none;
+  color: #000;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+.image-card-media img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+  background: #f1f1f1;
+}
+.image-card-copy {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.image-card-title {
+  font-weight: 800;
+  line-height: 1.25;
+}
+.image-card-meta {
+  font-weight: 800;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.newsletter {
+  background: #000;
+  color: #fff;
+  padding: 70px 20px;
+}
+.newsletter-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+.newsletter-copy h2 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+.newsletter-copy p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  margin-bottom: 10px;
+  max-width: 62ch;
+}
+.newsletter-note {
+  color: rgba(255, 255, 255, 0.7);
+}
+.privacy-link {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 800;
+}
+.newsletter-form {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+}
+.newsletter-label {
+  display: block;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 10px;
+  color: rgba(255, 255, 255, 0.75);
+}
+.newsletter-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+}
+.newsletter-row input {
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  outline: none;
+}
+.newsletter-row input:focus {
+  border-color: #1b8cff;
+}
+.newsletter-row button {
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 0;
+  background: var(--nasa-red);
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+.newsletter-row button:hover {
+  filter: brightness(1.05);
+}
+
+.freedom {
+  background: #000;
+  color: #fff;
+  padding: 70px 20px;
+}
+.freedom-inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  align-items: center;
+}
+.freedom-media {
+  border-radius: 14px;
+  min-height: 360px;
+  background: linear-gradient(135deg, rgba(238, 53, 46, 0.15), rgba(255, 255, 255, 0.05)),
+    url("https://www.nasa.gov/wp-content/uploads/2026/04/freedom250.jpg") center/cover no-repeat;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.freedom-copy h2 {
+  font-size: 46px;
+  font-weight: 800;
+  line-height: 1.05;
+  margin: 6px 0 14px;
+}
+.freedom-copy p {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  margin: 0 0 18px;
+  max-width: 64ch;
+}
+.photo-credit {
+  margin-top: 12px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.topics {
+  background: #000;
+  color: #fff;
+  padding: 50px 20px 70px;
+}
+.topics h2 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.topics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.topics-grid a {
+  text-decoration: none;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px 14px;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.03);
+}
+.topics-grid a:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+.site-footer {
+  background: #000;
+  color: #fff;
+  padding: 60px 20px 24px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 0.9fr;
+  gap: 36px;
+  align-items: start;
+}
+.footer-logo {
+  width: 56px;
+  margin-bottom: 14px;
+}
+.footer-brand h3 {
+  font-size: 16px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+.footer-brand p {
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.55;
+  margin-bottom: 14px;
+  max-width: 58ch;
+}
+.footer-link-cta {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 800;
+  text-decoration: none;
+  margin-bottom: 12px;
+}
+.footer-link-cta:hover {
+  text-decoration: underline;
+}
+.footer-join {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+}
+.footer-join:hover {
+  text-decoration: underline;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+.footer-col a {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  padding: 8px 0;
+  font-weight: 800;
+}
+.footer-col a:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+.footer-follow h4 {
+  font-size: 14px;
+  font-weight: 900;
+  margin: 8px 0 12px;
+}
+.footer-icons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.footer-icons a {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 900;
+}
+.footer-icons a:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+.footer-small-link {
+  display: block;
+  padding: 8px 0;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 800;
+}
+.footer-small-link:hover {
+  text-decoration: underline;
+}
+.footer-bottom {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  gap: 18px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.footer-meta {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.footer-meta a {
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+}
+.footer-meta a:hover {
+  color: #fff;
+}
+.footer-updated {
+  color: rgba(255, 255, 255, 0.65);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .featured-video-inner,
+  .image-of-day-inner,
+  .newsletter-inner,
+  .freedom-inner,
+  .footer-top {
+    grid-template-columns: 1fr;
   }
 
-  .menu-icon span {
-    width: 25px;
-    height: 2px;
-    background-color: white;
+  .featured-video-copy h2,
+  .newsletter-copy h2,
+  .freedom-copy h2,
+  .iod-left h2 {
+    font-size: 38px;
+  }
+
+  .science-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .more-images-grid {
+    grid-template-columns: 1fr;
+  }
+  .topics-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .footer-nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .science-grid {
+    grid-template-columns: 1fr;
+  }
+  .newsletter-row {
+    grid-template-columns: 1fr;
+  }
+  .footer-nav {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Screenshot-matching overrides (nasa.gov-like) ---------- */
+.kicker-dark,
+.kicker-light {
+  display: inline-block;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+.kicker-dark {
+  color: rgba(255, 255, 255, 0.65);
+}
+.kicker-light {
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.circle-arrow {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: var(--nasa-red);
+  display: inline-grid;
+  place-items: center;
+  color: #fff;
+  font-size: 12px;
+  line-height: 1;
+  transform: translateY(-1px);
+}
+
+.nasa-link {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 800;
+  color: #fff;
+}
+.nasa-link:hover {
+  text-decoration: underline;
+}
+.nasa-link.dark {
+  color: #000;
+}
+
+/* Featured Video (black left copy, right video preview) */
+.featured-video {
+  padding: 70px 20px;
+  background: #000;
+  color: #fff;
+}
+.featured-video-inner {
+  grid-template-columns: 0.9fr 1.6fr;
+  align-items: center;
+}
+.featured-video-copy h2 {
+  font-size: 56px;
+  line-height: 0.98;
+  letter-spacing: -1px;
+  margin: 0 0 16px;
+}
+.featured-video-copy p {
+  color: rgba(255, 255, 255, 0.78);
+  max-width: 44ch;
+  margin-bottom: 18px;
+}
+.featured-video-media {
+  background: transparent;
+  border-radius: 0;
+  min-height: unset;
+  overflow: visible;
+  display: flex;
+  justify-content: flex-end;
+}
+.yt-embed {
+  width: 100%;
+  max-width: 860px;
+  aspect-ratio: 16 / 9;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: #000;
+}
+.yt-embed iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+}
+
+@media (max-width: 980px) {
+  .featured-video-inner {
+    grid-template-columns: 1fr;
+  }
+  .yt-big {
+    font-size: 30px;
+  }
+}
+
+/* NASA Science (white bg + image tiles) */
+.nasa-science {
+  background: #fff;
+  color: #000;
+  padding: 70px 20px;
+}
+.section-header.light h2 {
+  color: #000;
+}
+.science-grid {
+  gap: 18px;
+}
+.science-tile {
+  position: relative;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  min-height: 420px;
+  overflow: hidden;
+  background: var(--tile-bg) center/cover no-repeat;
+}
+.science-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.68));
+}
+.science-tile .tile-title {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 2;
+  font-size: 26px;
+  color: #fff;
+  line-height: 1.05;
+}
+.science-tile .circle-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  font-size: 13px;
+}
+.science-tile:hover {
+  transform: none;
+  filter: brightness(1.02);
+}
+
+@media (max-width: 980px) {
+  .science-tile {
+    min-height: 320px;
+  }
+}
+
+/* Image of the Day (download + view image) */
+.iod-right {
+  position: relative;
+}
+.iod-right img {
+  border-radius: 2px;
+  aspect-ratio: auto;
+  max-height: 520px;
+}
+.iod-download {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 0;
+  cursor: pointer;
+  background: #1b67ff;
+  color: #fff;
+  font-weight: 900;
+}
+.iod-view {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  color: #000;
+  text-decoration: none;
+  font-weight: 800;
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.88);
+  padding: 8px 10px;
+  border-radius: 999px;
+}
+
+/* Newsletter (full image banner) */
+.newsletter {
+  padding: 0;
+  background: url("https://www.nasa.gov/wp-content/uploads/2023/01/webb-tarantula-neb.png?resize=1536,1199") center/cover
+    no-repeat;
+  position: relative;
+  color: #fff;
+  min-height: 420px;
+}
+.newsletter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* NASA-style left dark fade so image stays visible */
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.28) 52%, rgba(0, 0, 0, 0.08) 100%);
+}
+.newsletter-inner {
+  position: relative;
+  padding: 70px 20px;
+  display: block;
+}
+.newsletter-copy h2 {
+  font-size: 56px;
+  line-height: 0.98;
+  margin-bottom: 16px;
+}
+.newsletter-copy p {
+  max-width: 52ch;
+}
+.newsletter-note a {
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 800;
+}
+.newsletter-form {
+  display: none;
+}
+
+/* Freedom 250 (white left copy, right image + caption) */
+.freedom {
+  background: #fff;
+  color: #000;
+  padding: 70px 20px;
+}
+.freedom-inner {
+  grid-template-columns: 1fr 1.2fr;
+  align-items: start;
+}
+.freedom-copy h2 {
+  font-size: 56px;
+  line-height: 0.98;
+  margin-bottom: 14px;
+}
+.freedom-sub {
+  font-weight: 800;
+  margin-bottom: 14px;
+  color: rgba(0, 0, 0, 0.7);
+}
+.freedom-copy p {
+  color: rgba(0, 0, 0, 0.72);
+}
+.freedom-figure {
+  margin: 0;
+}
+.freedom-figure img {
+  width: 100%;
+  display: block;
+  border-radius: 2px;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+.freedom-figure figcaption {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(0, 0, 0, 0.62);
+}
+.freedom-figure .credit {
+  display: block;
+  margin-top: 6px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* Topics (white bg + 4x2 image cards) */
+.topics {
+  background: #fff;
+  color: #000;
+  padding: 60px 20px 80px;
+}
+.topics h2 {
+  font-size: 40px;
+  margin-bottom: 22px;
+}
+.topics-grid {
+  gap: 18px;
+}
+.topic-card {
+  position: relative;
+  height: 260px;
+  border-radius: 0;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  background: #111;
+  display: block;
+}
+.topic-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.topic-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.75));
+}
+.topic-card .topic-title {
+  position: absolute;
+  left: 18px;
+  bottom: 18px;
+  z-index: 2;
+  color: #fff;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.05;
+}
+.topic-card .circle-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+  font-size: 13px;
+}
+
+@media (max-width: 980px) {
+  .topic-card {
+    height: 220px;
+  }
+  .freedom-inner {
+    grid-template-columns: 1fr;
   }
 }
