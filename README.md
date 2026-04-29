@@ -24,4 +24,4 @@ To view this project locally:
 
 1. **Clone the repository:**
    ```bash
-   vercel clone ([https://nasa-landing-page-orcin.vercel.app/])
+   vercel clone https://nasa-landing-page-orcin.vercel.app/
